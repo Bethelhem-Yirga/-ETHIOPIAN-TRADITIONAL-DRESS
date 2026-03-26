@@ -1,0 +1,65 @@
+/* components/AboutPreview.css */
+.about-preview {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #fff5e8 0%, #ffe8d4 100%);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  color: #8B4513;
+  margin-bottom: 0.5rem;
+}
+
+.about-text .amharic-text {
+  font-size: 1.2rem;
+  color: #A0522D;
+  margin-bottom: 1.5rem;
+  font-family: 'Ethiopic', sans-serif;
+}
+
+.about-text p {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.learn-more {
+  display: inline-block;
+  color: #8B4513;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.learn-more:hover {
+  transform: translateX(10px);
+  color: #FFD700;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .about-text {
+    order: 2;
+  }
+  
+  .about-image {
+    order: 1;
+  }
+}
