@@ -1,16 +1,18 @@
-// pages/Home.js
 import React from 'react';
 import Hero from '../components/Hero';
+import Features from '../components/Features';
 import FeaturedProducts from '../components/FeaturedProducts';
-import AboutPreview from '../components/AboutPreview';
-import './Home.css';
+import Newsletter from '../components/Newsletter';
+import Testimonials from '../components/Testimonials';
 
 const Home = () => {
   return (
-    <div className="home">
+    <div>
       <Hero />
+      <Features />
       <FeaturedProducts />
-      <AboutPreview />
+      <Newsletter />
+      <Testimonials />
     </div>
   );
 };
