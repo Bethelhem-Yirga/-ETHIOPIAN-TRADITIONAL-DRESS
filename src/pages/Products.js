@@ -1,61 +1,61 @@
-// pages/Products.js
 import React, { useState } from 'react';
+import ProductCard from '../components/ProductCard';
 import './Products.css';
 
 const allProducts = [
   {
     id: 1,
-    name: "Habesha Kemis - Gold Edition",
-    amharicName: "ሐበሻ ቀሚስ - ወርቅ",
-    price: "3500 ETB",
-    category: "women",
-    image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3",
-    description: "Luxurious handwoven dress with golden embroidery"
+    name: "Habesha Kemis",
+    amharicName: "ሐበሻ ቀሚስ",
+    price: 3500,
+    category: "ሐበሻ ቀሚስ",
+    image: "img/hbdr.jpg",
+    isNew: true
   },
   {
     id: 2,
-    name: "Men's Traditional Suit",
-    amharicName: "የወንዶች ባህላዊ ልብስ",
-    price: "3000 ETB",
-    category: "men",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3",
-    description: "Elegant traditional suit with shawl"
+    name: "Habesha Man Traditional Cloth",
+    amharicName: "የወንዶች ልብስ",
+    price: 3000,
+    category: "የወንዶች ልብስ",
+    image: "img/mens.jpg",
+    isNew: false
   },
   {
     id: 3,
     name: "Netela Scarf",
     amharicName: "ነጠላ",
-    price: "800 ETB",
-    category: "accessories",
-    image: "https://images.unsplash.com/photo-1584271854089-9bb3e5168e32?ixlib=rb-4.0.3",
-    description: "Traditional white scarf with colored borders"
+    price: 800,
+    category: "ነጠላ",
+    image: "img/scarf.jpg",
+    isNew: true
   },
   {
     id: 4,
-    name: "Habesha Kemis - Silver Edition",
-    amharicName: "ሐበሻ ቀሚስ - ብር",
-    price: "2800 ETB",
-    category: "women",
-    image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3",
-    description: "Elegant dress with silver embroidery"
+    name: "Habesha Man Traditional Cloth",
+    amharicName: "የወንዶች ልብስ",
+    price: 1800,
+    category: "የወንዶች ልብስ",
+    image: "img/m4.jpg",
+    isNew: false
   },
   {
     id: 5,
-    name: "Kuta Traditional Jacket",
-    amharicName: "ኩታ",
-    price: "1800 ETB",
-    category: "men",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3",
-    description: "Traditional men's jacket"
+    name: "Tilfi",
+    amharicName: "ጥልፍ",
+    price: 1200,
+    category: "ነጠላ",
+    image: "img/telf.jpg",
+    isNew: false
   },
   {
     id: 6,
-    name: "Tilfi Shawl",
-    amharicName: "ጥልፍ መጠቅለያ",
-    price: "1200 ETB",
-    category: "accessories",
-    image: "https://images.unsplash.com/photo-1584271854089-9bb3e5168e32?ixlib=rb-4.0.3",
-    description: "Hand-embroidered shawl"
+    name: "Wedding Dress",
+    amharicName: "የሰርግ ቀሚስ",
+    price: 5500,
+    category: "ሐበሻ ቀሚስ",
+    image: "img/wd.jpg",
+    isNew: true
   }
 ];
 
@@ -73,61 +73,30 @@ const Products = () => {
   return (
     <div className="products-page">
       <div className="container">
-        <h1 className="page-title">Our Collection</h1>
-        <p className="page-subtitle">የእኛ ምርቶች</p>
-        
-        <div className="filters">
-          <div className="search-bar">
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-          
-          <div className="category-filters">
-            <button
-              className={selectedCategory === 'all' ? 'active' : ''}
-              onClick={() => setSelectedCategory('all')}
-            >
-              All
-            </button>
-            <button
-              className={selectedCategory === 'women' ? 'active' : ''}
-              onClick={() => setSelectedCategory('women')}
-            >
-              Women's
-            </button>
-            <button
-              className={selectedCategory === 'men' ? 'active' : ''}
-              onClick={() => setSelectedCategory('men')}
-            >
-              Men's
-            </button>
-            <button
-              className={selectedCategory === 'accessories' ? 'active' : ''}
-              onClick={() => setSelectedCategory('accessories')}
-            >
-              Accessories
-            </button>
+        <div className="products-header">
+          <h1 className="page-title">Our Collection</h1>
+          <p className="page-subtitle">የእኛ ምርቶች</p>
+        </div>
+
+        <div className="filters-bar">
+          <input 
+            type="text" 
+            placeholder="Search products..." 
+            className="search-input"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <div className="category-buttons">
+            <button className={selectedCategory === 'all' ? 'active' : ''} onClick={() => setSelectedCategory('all')}>All</button>
+            <button className={selectedCategory === 'ሐበሻ ቀሚስ' ? 'active' : ''} onClick={() => setSelectedCategory('ሐበሻ ቀሚስ')}>ሐበሻ ቀሚስ</button>
+            <button className={selectedCategory === 'የወንዶች ልብስ' ? 'active' : ''} onClick={() => setSelectedCategory('የወንዶች ልብስ')}>የወንዶች ልብስ</button>
+            <button className={selectedCategory === 'ነጠላ' ? 'active' : ''} onClick={() => setSelectedCategory('ነጠላ')}>ነጠላ</button>
           </div>
         </div>
-        
+
         <div className="products-grid">
           {filteredProducts.map(product => (
-            <div key={product.id} className="product-card">
-              <div className="product-image">
-                <img src={product.image} alt={product.name} />
-              </div>
-              <div className="product-info">
-                <h3>{product.name}</h3>
-                <p className="amharic-name">{product.amharicName}</p>
-                <p className="product-description">{product.description}</p>
-                <p className="product-price">{product.price}</p>
-                <button className="add-to-cart">Add to Cart</button>
-              </div>
-            </div>
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </div>
