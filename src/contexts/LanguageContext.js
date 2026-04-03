@@ -75,7 +75,15 @@ export const translations = {
     happyCustomers: "Happy Customers",
     uniqueDesigns: "Unique Designs",
     skilledArtisans: "Skilled Artisans",
-    yearsExcellence: "Years of Excellence"
+    yearsExcellence: "Years of Excellence",
+
+    name: "Name",
+    email: "Email",
+    message: "Message",
+    sendMessage: "Send Message",
+
+    quickLinks: "Quick Links"
+
   },
   
   am: {
@@ -150,6 +158,11 @@ export const translations = {
     uniqueDesigns: "የተለየ ንድፍ",
     skilledArtisans: "የእደ ጥበብ ባለሙያዎች",
     yearsExcellence: "ዓመታት",
+    name: "ስም",
+    email: "ኢሜል",
+    message: "መልእክት",
+    sendMessage: "መልዕክት ይላኩ",
+    quickLinks: "ፈጣን ሊንኮች"
   }
 };
 
