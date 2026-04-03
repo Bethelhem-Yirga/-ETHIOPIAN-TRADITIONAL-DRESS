@@ -1,25 +1,33 @@
-// components/Navbar.js
-import React, { useState } from 'react';
+// components/Navbar.js - Updated for Shionhouse style
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const navLinks = [
-    { path: '/', name: 'Home', amharic: 'ዋና ገጽ' },
-    { path: '/products', name: 'Products', amharic: 'ምርቶች' },
-    { path: '/about', name: 'About', amharic: 'ስለ እኛ' },
-    { path: '/contact', name: 'Contact', amharic: 'አግኙን' }
+    { path: '/', name: 'Home' },
+    { path: '/products', name: 'shop' },
+    { path: '/about', name: 'About' },
+    { path: '/contact', name: 'Contact' }
   ];
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <Link to="/" className="nav-logo">
-          <span className="logo-text">Kuta Collections</span>
-          <span className="logo-sub">ዕደ ጥበብ</span>
+        <Link to="/" className="logo">
+          HABESHA<span>Collections</span>
         </Link>
 
         <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
@@ -31,15 +39,18 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               {link.name}
-              <span className="amharic-text">{link.amharic}</span>
             </Link>
           ))}
+          <div className="cart-icon">
+            🛒
+            <span className="cart-count">0</span>
+          </div>
         </div>
 
         <div className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
     </nav>
