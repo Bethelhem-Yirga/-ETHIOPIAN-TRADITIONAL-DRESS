@@ -30,7 +30,7 @@ const Home = () => {
       </div>
 
       {/* Hero Slider Section */}
-     {/* Hero Slider Section */}
+{/* Hero Slider Section */}
 <section className="hero-slider">
   <div className="slider-container">
     {slides.map((slide, index) => (
@@ -39,25 +39,56 @@ const Home = () => {
         className={`slide ${index === currentSlide ? 'active' : ''}`}
         style={{ backgroundColor: slide.bgColor }}
       >
+        {/* Animated Background Particles */}
+        <div className="particles">
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+        </div>
+        
+        {/* Animated Corner Decorations */}
+        <div className="corner-decoration top-left"></div>
+        <div className="corner-decoration top-right"></div>
+        <div className="corner-decoration bottom-left"></div>
+        <div className="corner-decoration bottom-right"></div>
+        
         <div className="slide-content">
           <div className="slide-text">
+            <div className="animated-badge">✨ NEW COLLECTION ✨</div>
             <h2 className="slide-title">
               <span className="title-line line1">
                 {getSlideTitle(slide.id)}
+                <span className="line-decoration"></span>
               </span>
               <br />
               <span className="title-line line2">
                 {getSlideSubtitle(slide.id)}
+                <span className="line-decoration"></span>
               </span>
               <br />
               <span className="title-line line3 highlight">
                 {getSlideHighlight(slide.id)}
+                <span className="line-decoration"></span>
               </span>
             </h2>
-            <Link to="/products" className="shop-now-btn">{t('shopNow')}</Link>
+            <div className="button-wrapper">
+              <Link to="/products" className="shop-now-btn">
+                <span>{t('shopNow')}</span>
+                <svg className="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </Link>
+            </div>
           </div>
           <div className="slide-image">
-            <img src={slide.image} alt={getSlideTitle(slide.id)} />
+            <div className="image-wrapper">
+              <img src={slide.image} alt={getSlideTitle(slide.id)} />
+              <div className="image-shine"></div>
+              <div className="image-border"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -70,13 +101,28 @@ const Home = () => {
         key={slide.id}
         className={`nav-dot ${index === currentSlide ? 'active' : ''}`}
         onClick={() => goToSlide(index)}
-      />
+      >
+        <span className="dot-tooltip">Slide {index + 1}</span>
+      </button>
     ))}
   </div>
   
   <div className="slider-arrows">
-    <button className="arrow prev" onClick={() => goToSlide((currentSlide - 1 + slides.length) % slides.length)}>❮</button>
-    <button className="arrow next" onClick={() => goToSlide((currentSlide + 1) % slides.length)}>❯</button>
+    <button className="arrow prev" onClick={() => goToSlide((currentSlide - 1 + slides.length) % slides.length)}>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+    <button className="arrow next" onClick={() => goToSlide((currentSlide + 1) % slides.length)}>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
+  </div>
+  
+  {/* Progress Bar */}
+  <div className="slider-progress">
+    <div className="progress-bar" style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}></div>
   </div>
 </section>
       {/* New Arrivals Section */}
