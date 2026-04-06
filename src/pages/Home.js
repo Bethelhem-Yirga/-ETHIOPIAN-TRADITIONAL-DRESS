@@ -121,7 +121,7 @@ const Home = () => {
               <Link to="/about" className="read-more">{t('readMore')} →</Link>
             </div>
             <div className="about-image">
-              <img src="img/habeshkemis.jpg" alt={isAmharic ? 'ስለ ኩታ ስብስቦች' : 'About KUTA Collections'} />
+              <img src="img/big.jpg" alt={isAmharic ? 'ስለ ኩታ ስብስቦች' : 'About KUTA Collections'} />
             </div>
           </div>
         </div>
