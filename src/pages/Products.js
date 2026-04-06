@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ProductCard from '../components/ProductCard';
+import { useLanguage } from '../contexts/LanguageContext';
 import './Products.css';
 
 const allProducts = [
@@ -60,6 +61,7 @@ const allProducts = [
 ];
 
 const Products = () => {
+  const { t } = useLanguage();  // Removed unused 'isAmharic'
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -74,23 +76,22 @@ const Products = () => {
     <div className="products-page">
       <div className="container">
         <div className="products-header">
-          <h1 className="page-title">Our Collection</h1>
-          <p className="page-subtitle">የእኛ ምርቶች</p>
+          <h1 className="page-title">{t('OurCollections')}</h1>
         </div>
 
         <div className="filters-bar">
           <input 
             type="text" 
-            placeholder="Search products..." 
+            placeholder={t('searchProducts') || "Search products..."} 
             className="search-input"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="category-buttons">
-            <button className={selectedCategory === 'all' ? 'active' : ''} onClick={() => setSelectedCategory('all')}>All</button>
-            <button className={selectedCategory === 'ሐበሻ ቀሚስ' ? 'active' : ''} onClick={() => setSelectedCategory('ሐበሻ ቀሚስ')}>ሐበሻ ቀሚስ</button>
-            <button className={selectedCategory === 'የወንዶች ልብስ' ? 'active' : ''} onClick={() => setSelectedCategory('የወንዶች ልብስ')}>የወንዶች ልብስ</button>
-            <button className={selectedCategory === 'ነጠላ' ? 'active' : ''} onClick={() => setSelectedCategory('ነጠላ')}>ነጠላ</button>
+            <button className={selectedCategory === 'all' ? 'active' : ''} onClick={() => setSelectedCategory('all')}>{t('all')}</button>
+            <button className={selectedCategory === 'ሐበሻ ቀሚስ' ? 'active' : ''} onClick={() => setSelectedCategory('ሐበሻ ቀሚስ')}>{t('habeshaKemis')}</button>
+            <button className={selectedCategory === 'የወንዶች ልብስ' ? 'active' : ''} onClick={() => setSelectedCategory('የወንዶች ልብስ')}>{t('habeshaManCloth')}</button>
+            <button className={selectedCategory === 'ነጠላ' ? 'active' : ''} onClick={() => setSelectedCategory('ነጠላ')}>{t('netelaScarf')}</button>
           </div>
         </div>
 
