@@ -556,3 +556,848 @@
   }
 }
 
+/* Hero Slider Animations */
+
+/* Slide Transition Animation */
+.slide {
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+/* Slide Content Fade In Animation */
+.slide.active .slide-text {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide.active .slide-image {
+  animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+}
+
+/* Title Line Animations */
+.slide.active .title-line.line1 {
+  animation: slideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide.active .title-line.line2 {
+  animation: slideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.15s forwards;
+}
+
+.slide.active .title-line.line3 {
+  animation: slideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+
+/* Shop Now Button Animation */
+.slide.active .shop-now-btn {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.45s forwards;
+}
+
+/* Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale Animation for Image */
+.slide.active .slide-image img {
+  animation: scaleIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Nav Dots Animation */
+.nav-dot {
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.5s ease-out backwards;
+}
+
+.nav-dot:nth-child(1) { animation-delay: 0.1s; }
+.nav-dot:nth-child(2) { animation-delay: 0.2s; }
+.nav-dot:nth-child(3) { animation-delay: 0.3s; }
+
+.nav-dot.active {
+  animation: pulse 0.5s ease-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Arrow Buttons Animation */
+.arrow {
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-out 0.4s backwards;
+}
+
+.arrow:hover {
+  transform: scale(1.1);
+  background: var(--primary);
+  color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Image Parallax Effect */
+.slide-image img {
+  transition: transform 0.3s ease;
+}
+
+.slide-image:hover img {
+  transform: scale(1.02);
+}
+
+/* Text Glow Animation on Hover */
+.highlight {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.highlight:hover {
+  text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+  transform: scale(1.05);
+}
+
+/* Shop Now Button Hover Animation */
+.shop-now-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.shop-now-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.shop-now-btn:hover::before {
+  left: 100%;
+}
+
+.shop-now-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Floating Animation for Active Slide Image */
+.slide.active .slide-image {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Background Gradient Animation for Active Slide */
+.slide.active {
+  animation: bgPulse 10s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.02);
+  }
+}
+
+/* Loading Animation for First Slide */
+.slide:first-child .slide-text {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .slide.active .slide-text,
+  .slide.active .slide-image,
+  .slide.active .title-line,
+  .slide.active .shop-now-btn,
+  .slide-image img,
+  .slide-image {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .slide.active .slide-image {
+    transform: none;
+  }
+  
+  .shop-now-btn::before {
+    display: none;
+  }
+}
+
+/* Hero Slider - Complete Animation Package */
+
+.hero-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ========== PARTICLES ANIMATION ========== */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(255, 107, 53, 0.15);
+  border-radius: 50%;
+  animation: floatParticle 15s infinite linear;
+}
+
+.particle:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  top: 10%;
+  left: 5%;
+  animation-duration: 20s;
+  animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+  width: 120px;
+  height: 120px;
+  bottom: 15%;
+  right: 8%;
+  animation-duration: 25s;
+  animation-delay: 2s;
+}
+
+.particle:nth-child(3) {
+  width: 60px;
+  height: 60px;
+  top: 60%;
+  left: 15%;
+  animation-duration: 18s;
+  animation-delay: 4s;
+}
+
+.particle:nth-child(4) {
+  width: 100px;
+  height: 100px;
+  top: 30%;
+  right: 20%;
+  animation-duration: 22s;
+  animation-delay: 1s;
+}
+
+.particle:nth-child(5) {
+  width: 40px;
+  height: 40px;
+  bottom: 30%;
+  left: 25%;
+  animation-duration: 16s;
+  animation-delay: 3s;
+}
+
+.particle:nth-child(6) {
+  width: 90px;
+  height: 90px;
+  top: 70%;
+  right: 15%;
+  animation-duration: 28s;
+  animation-delay: 5s;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ========== CORNER DECORATIONS ========== */
+.corner-decoration {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.slide.active .corner-decoration {
+  opacity: 1;
+}
+
+.top-left {
+  top: 20px;
+  left: 20px;
+  border-top: 3px solid var(--primary);
+  border-left: 3px solid var(--primary);
+  animation: slideInCorner 0.6s ease-out forwards;
+}
+
+.top-right {
+  top: 20px;
+  right: 20px;
+  border-top: 3px solid var(--primary);
+  border-right: 3px solid var(--primary);
+  animation: slideInCorner 0.6s ease-out 0.1s forwards;
+}
+
+.bottom-left {
+  bottom: 20px;
+  left: 20px;
+  border-bottom: 3px solid var(--primary);
+  border-left: 3px solid var(--primary);
+  animation: slideInCorner 0.6s ease-out 0.2s forwards;
+}
+
+.bottom-right {
+  bottom: 20px;
+  right: 20px;
+  border-bottom: 3px solid var(--primary);
+  border-right: 3px solid var(--primary);
+  animation: slideInCorner 0.6s ease-out 0.3s forwards;
+}
+
+@keyframes slideInCorner {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+  }
+}
+
+/* ========== ANIMATED BADGE ========== */
+.animated-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: white;
+  padding: 5px 15px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out 0.1s forwards, pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+  }
+}
+
+/* ========== TITLE ANIMATIONS ========== */
+.title-line {
+  display: inline-block;
+  position: relative;
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideInLeft 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.title-line.line1 {
+  animation-delay: 0.2s;
+}
+
+.title-line.line2 {
+  animation-delay: 0.35s;
+}
+
+.title-line.line3 {
+  animation-delay: 0.5s;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Line decoration */
+.line-decoration {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+  animation: expandLine 0.8s ease-out 1s forwards;
+}
+
+@keyframes expandLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Highlight text special effect */
+.highlight {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  animation: glowPulse 2s infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(255, 107, 53, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 107, 53, 0.6);
+  }
+}
+
+/* ========== BUTTON ANIMATIONS ========== */
+.button-wrapper {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.shop-now-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.shop-now-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.shop-now-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.shop-now-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+}
+
+.shop-now-btn .btn-icon {
+  transition: transform 0.3s ease;
+}
+
+.shop-now-btn:hover .btn-icon {
+  transform: translateX(8px);
+}
+
+/* ========== IMAGE ANIMATIONS ========== */
+.image-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.image-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shine 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  20%, 100% {
+    left: 100%;
+  }
+}
+
+.image-border {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary), var(--primary-light), var(--primary));
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.image-wrapper:hover .image-border {
+  opacity: 1;
+  animation: borderRotate 3s linear infinite;
+}
+
+@keyframes borderRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========== NAVIGATION DOTS ========== */
+.nav-dot {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+  background: var(--primary);
+  width: 30px;
+  border-radius: 6px;
+}
+
+.nav-dot:hover {
+  transform: scale(1.2);
+  background: var(--primary);
+}
+
+.dot-tooltip {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.nav-dot:hover .dot-tooltip {
+  opacity: 1;
+  visibility: visible;
+  bottom: 30px;
+}
+
+/* ========== ARROW BUTTONS ========== */
+.arrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.arrow svg {
+  transition: transform 0.3s ease;
+}
+
+.arrow:hover {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.1);
+}
+
+.arrow:hover svg {
+  transform: scale(1.2);
+}
+
+.arrow:active {
+  transform: scale(0.95);
+}
+
+/* ========== PROGRESS BAR ========== */
+.slider-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  transition: width 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  animation: progressShine 1.5s infinite;
+}
+
+@keyframes progressShine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ========== SLIDE TRANSITION EFFECTS ========== */
+.slide {
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.slide:not(.active) {
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Slide content hover effects */
+.slide:hover .slide-image img {
+  transform: scale(1.05);
+}
+
+/* ========== RESPONSIVE ANIMATIONS ========== */
+@media (max-width: 768px) {
+  .particle {
+    display: none;
+  }
+  
+  .corner-decoration {
+    width: 50px;
+    height: 50px;
+  }
+  
+  @keyframes slideInCorner {
+    to {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  
+  .arrow {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .animated-badge {
+    font-size: 0.7rem;
+  }
+}
+
+/* ========== REDUCED MOTION ========== */
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .image-shine,
+  .progress-bar::after,
+  .highlight,
+  .shop-now-btn::before {
+    animation: none !important;
+  }
+  
+  .title-line,
+  .slide-text,
+  .image-wrapper {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .nav-dot.active {
+    animation: none;
+  }
+}
+
+/* ========== LOADING ANIMATION ========== */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading .slide-image {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 1.5s infinite;
+}
