@@ -170,7 +170,7 @@ export const translations = {
 export const slides = [
   {
     id: 1,
-    image: "img/habesha1.png",
+    image: "img/resize-1775216661341631800s1.jpg",
     bgColor: "#f5e6d3"
   },
   {
@@ -192,7 +192,7 @@ export const newArrivals = [
     nameEn: "Habesha Kemis",
     nameAm: "ሐበሻ ቀሚስ",
     price: "3500",
-    image: "img/habesha1.png",
+    image: "img/s1.jpg",
     isNew: true
   },
   {
@@ -200,7 +200,7 @@ export const newArrivals = [
     nameEn: "Habesha Man Traditional Cloth",
     nameAm: "የወንዶች ባህላዊ ልብስ",
     price: "3000",
-    image: "img/mens.jpg",
+    image: "img/m1.jpg",
     isNew: true
   },
   {
@@ -208,7 +208,7 @@ export const newArrivals = [
     nameEn: "Netela Scarf",
     nameAm: "ነጠላ",
     price: "500",
-    image: "img/netela.jpg",
+    image: "img/n1.jpg",
     isNew: true
   },
   {
@@ -216,7 +216,7 @@ export const newArrivals = [
     nameEn: "Habesha Man Traditional Cloth",
     nameAm: "የወንዶች ባህላዊ ልብስ",
     price: "3000",
-    image: "img/m4.jpg",
+    image: "img/m2.jpg",
     isNew: false
   },
   {
@@ -224,7 +224,7 @@ export const newArrivals = [
     nameEn: "Tilfi",
     nameAm: "ጥልፍ",
     price: "1800",
-    image: "img/telf.jpg",
+    image: "img/t1.jpg",
     isNew: false
   },
   {
@@ -232,7 +232,7 @@ export const newArrivals = [
     nameEn: "Wedding Dress",
     nameAm: "የሰርግ ቀሚስ",
     price: "5000",
-    image: "img/wd.jpg",
+    image: "img/w1.jpg",
     isNew: false
   },
   {
@@ -240,7 +240,7 @@ export const newArrivals = [
     nameEn: "Habesha Man Traditional Cloth",
     nameAm: "የወንዶች ባህላዊ ልብስ",
     price: "3000",
-    image: "img/mens3.jpg",
+    image: "img/m2.jpg",
     isNew: false
   },
   {
@@ -248,7 +248,7 @@ export const newArrivals = [
     nameEn: "Embroidered Scarf",
     nameAm: "ጥልፍ ሻርፕ",
     price: "500",
-    image: "img/scarf.jpg",
+    image: "img/t2.jpg",
     isNew: false
   }
 ];
