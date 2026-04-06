@@ -30,49 +30,55 @@ const Home = () => {
       </div>
 
       {/* Hero Slider Section */}
-      <section className="hero-slider">
-        <div className="slider-container">
-          {slides.map((slide, index) => (
-            <div
-              key={slide.id}
-              className={`slide ${index === currentSlide ? 'active' : ''}`}
-              style={{ backgroundColor: slide.bgColor }}
-            >
-              <div className="slide-content">
-                <div className="slide-text">
-                  <h2 className="slide-title">
-                    {getSlideTitle(slide.id)}
-                    <br />
-                    <span className="subtitle">{getSlideSubtitle(slide.id)}</span>
-                    <br />
-                    <span className="highlight">{getSlideHighlight(slide.id)}</span>
-                  </h2>
-                  <Link to="/products" className="shop-now-btn">{t('shopNow')}</Link>
-                </div>
-                <div className="slide-image">
-                  <img src={slide.image} alt={getSlideTitle(slide.id)} />
-                </div>
-              </div>
-            </div>
-          ))}
+     {/* Hero Slider Section */}
+<section className="hero-slider">
+  <div className="slider-container">
+    {slides.map((slide, index) => (
+      <div
+        key={slide.id}
+        className={`slide ${index === currentSlide ? 'active' : ''}`}
+        style={{ backgroundColor: slide.bgColor }}
+      >
+        <div className="slide-content">
+          <div className="slide-text">
+            <h2 className="slide-title">
+              <span className="title-line line1">
+                {getSlideTitle(slide.id)}
+              </span>
+              <br />
+              <span className="title-line line2">
+                {getSlideSubtitle(slide.id)}
+              </span>
+              <br />
+              <span className="title-line line3 highlight">
+                {getSlideHighlight(slide.id)}
+              </span>
+            </h2>
+            <Link to="/products" className="shop-now-btn">{t('shopNow')}</Link>
+          </div>
+          <div className="slide-image">
+            <img src={slide.image} alt={getSlideTitle(slide.id)} />
+          </div>
         </div>
-        
-        <div className="slider-nav">
-          {slides.map((slide, index) => (
-            <button
-              key={slide.id}
-              className={`nav-dot ${index === currentSlide ? 'active' : ''}`}
-              onClick={() => goToSlide(index)}
-            />
-          ))}
-        </div>
-        
-        <div className="slider-arrows">
-          <button className="arrow prev" onClick={() => goToSlide((currentSlide - 1 + slides.length) % slides.length)}>❮</button>
-          <button className="arrow next" onClick={() => goToSlide((currentSlide + 1) % slides.length)}>❯</button>
-        </div>
-      </section>
-
+      </div>
+    ))}
+  </div>
+  
+  <div className="slider-nav">
+    {slides.map((slide, index) => (
+      <button
+        key={slide.id}
+        className={`nav-dot ${index === currentSlide ? 'active' : ''}`}
+        onClick={() => goToSlide(index)}
+      />
+    ))}
+  </div>
+  
+  <div className="slider-arrows">
+    <button className="arrow prev" onClick={() => goToSlide((currentSlide - 1 + slides.length) % slides.length)}>❮</button>
+    <button className="arrow next" onClick={() => goToSlide((currentSlide + 1) % slides.length)}>❯</button>
+  </div>
+</section>
       {/* New Arrivals Section */}
       <section className="new-arrivals">
         <div className="container">
