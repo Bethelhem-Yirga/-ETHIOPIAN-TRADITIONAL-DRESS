@@ -414,3 +414,256 @@
     color: #ccc;
   }
 }
+
+/* components/Chatbot.css - Enhanced Version */
+
+/* Online Status */
+.online-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: pulseGreen 1.5s infinite;
+}
+
+@keyframes pulseGreen {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+/* Chat Actions */
+.chat-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.faq-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  font-size: 1.1rem;
+}
+
+.faq-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* FAQ Panel */
+.faq-panel {
+  background: white;
+  border-bottom: 1px solid #eee;
+  max-height: 400px;
+  overflow-y: auto;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.faq-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+}
+
+.faq-header h4 {
+  margin: 0;
+  color: #1a1a2e;
+}
+
+.faq-header button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #666;
+  transition: transform 0.3s;
+}
+
+.faq-header button:hover {
+  transform: rotate(90deg);
+}
+
+.faq-categories {
+  padding: 15px;
+}
+
+.faq-category {
+  margin-bottom: 20px;
+}
+
+.faq-category-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ff6b35;
+}
+
+.faq-category-title span {
+  font-size: 1.2rem;
+}
+
+.faq-category-title h5 {
+  margin: 0;
+  color: #1a1a2e;
+}
+
+.faq-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.faq-question {
+  background: #f8f9fa;
+  border: none;
+  padding: 10px 15px;
+  text-align: left;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.faq-question:hover {
+  background: #ff6b35;
+  color: white;
+  transform: translateX(5px);
+}
+
+/* Support Request Button */
+.support-request {
+  padding: 10px 15px;
+  border-top: 1px solid #eee;
+  background: #fef9f5;
+}
+
+.connect-support-btn {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.connect-support-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Support Message Styling */
+.message.support .message-bubble {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.message.faq .message-bubble {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+}
+
+/* Welcome Message Animation */
+.message.welcome .message-bubble {
+  animation: welcomePulse 0.5s ease;
+}
+
+@keyframes welcomePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Message Text Formatting */
+.message-text {
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+/* Scrollbar for FAQ */
+.faq-panel::-webkit-scrollbar {
+  width: 5px;
+}
+
+.faq-panel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.faq-panel::-webkit-scrollbar-thumb {
+  background: #ff6b35;
+  border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .faq-category-title h5 {
+    font-size: 0.9rem;
+  }
+  
+  .faq-question {
+    font-size: 0.75rem;
+    padding: 8px 12px;
+  }
+  
+  .quick-replies {
+    gap: 5px;
+  }
+  
+  .quick-replies button {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+  }
+}
