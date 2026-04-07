@@ -170,17 +170,17 @@ export const translations = {
 export const slides = [
   {
     id: 1,
-    image: "img/resize-1775216661341631800s1.jpg",
+    image: "img/slide1.jpg",
     bgColor: "#f5e6d3"
   },
   {
     id: 2,
-    image: "img/cotton.png",
+    image: "img/w1.jpg",
     bgColor: "#e8d5c4"
   },
   {
     id: 3,
-    image: "img/habesha2.png",
+    image: "img/slide3.jpg",
     bgColor: "#f0e0d0"
   }
 ];
