@@ -11,7 +11,7 @@
 ![Product Page Screenshot](/img/product.png)
 *Figure 2: product page 
 
-![Chat Page Screenshot](/img/Ethio_chat.gif)
+![Chat Page Screenshot](/img/chat.gif)
 *Figure 3: chat 
 
 ![mobile viewScreenshot](/img/mobile_view.png)
