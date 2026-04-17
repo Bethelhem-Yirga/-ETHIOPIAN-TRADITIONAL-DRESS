@@ -3,7 +3,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/Bethelhem-Yirga/-ETHIOPIAN-TRADITIONAL-DRESS)
 ![GitHub forks](https://img.shields.io/github/forks/Bethelhem-Yirga/-ETHIOPIAN-TRADITIONAL-DRESS)
 ![GitHub issues](https://img.shields.io/github/issues/Bethelhem-Yirga/-ETHIOPIAN-TRADITIONAL-DRESS)
-![Website](https://img.shields.io/website?url=https://ethio-habesha-kemis.netlify.app/)
+![Website](https://img.shields.io/website?url=https://ethiopian-traditional-dress.vercel.app/)
 ![React](https://img.shields.io/badge/React-18.2.0-61dafb?logo=react)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-f7df1e?logo=javascript)
 ![CSS3](https://img.shields.io/badge/CSS3-Animated-1572b6?logo=css3)
@@ -23,7 +23,7 @@
 
 ## 🌍 Live Demo
 
-[View Live Demo](https://ethio-habesha-kemis.netlify.app/) | 
+[View Live Demo](https://ethiopian-traditional-dress.vercel.app/) | 
 [Report Bug](https://github.com/Bethelhem-Yirga/-ETHIOPIAN-TRADITIONAL-DRESS/issues)
 
 ## 📖 About The Project
