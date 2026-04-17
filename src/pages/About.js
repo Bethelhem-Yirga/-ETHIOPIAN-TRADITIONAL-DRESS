@@ -161,7 +161,7 @@ const About = () => {
             </div>
             <div className="journey-image fade-in-right">
               <img 
-                src="img/habeshkemis.jpg" 
+                src="img/big.jpg" 
                 alt={isAmharic ? 'ኢትዮጵያዊ ሽመና' : 'Ethiopian Weaving'}
               />
               <div className="image-caption">

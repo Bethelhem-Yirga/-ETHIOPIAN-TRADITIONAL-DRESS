@@ -1401,3 +1401,441 @@
   background-size: 1000px 100%;
   animation: shimmer 1.5s infinite;
 }
+
+/* ========== CUSTOM CURSOR ========== */
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: cursorPulse 1.5s infinite;
+}
+
+@keyframes cursorPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* ========== SCROLL PROGRESS BAR ========== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  transition: width 0.3s ease;
+}
+
+/* ========== WAVES ANIMATION ========== */
+.waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ff6b35" fill-opacity="0.5" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat-x;
+  background-size: 1440px 100px;
+  animation: wave 20s linear infinite;
+}
+
+.wave2 {
+  animation: wave 15s linear infinite reverse;
+  opacity: 0.5;
+  bottom: 10px;
+}
+
+.wave3 {
+  animation: wave 10s linear infinite;
+  opacity: 0.3;
+  bottom: 20px;
+}
+
+@keyframes wave {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 1440px;
+  }
+}
+
+/* ========== FLOATING SHAPES ========== */
+.floating-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0.3;
+  animation: floatShape 8s ease-in-out infinite;
+}
+
+.shape1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape2 {
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+  font-size: 18px;
+}
+
+.shape3 {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+  font-size: 30px;
+}
+
+.shape4 {
+  top: 40%;
+  right: 25%;
+  animation-delay: 1s;
+  font-size: 20px;
+}
+
+@keyframes floatShape {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(180deg);
+  }
+}
+
+/* ========== IMAGE GLOW EFFECT ========== */
+.image-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255,107,53,0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.image-wrapper:hover .image-glow {
+  opacity: 1;
+  animation: glowPulse 2s infinite;
+}
+
+/* ========== PRODUCT CARD STAGGERED ANIMATION ========== */
+.product-card {
+  animation: cardFadeIn 0.6s ease-out backwards;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== HOVER REVEAL EFFECT ========== */
+.product-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s;
+  transform: scale(0);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.product-card:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ========== BUTTON RIPPLE EFFECT ========== */
+.browse-btn, .read-more {
+  position: relative;
+  overflow: hidden;
+}
+
+.browse-btn::after, .read-more::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 107, 53, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.browse-btn:active::after, .read-more:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* ========== FEATURE ITEMS HOVER ANIMATION ========== */
+.feature-item {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-item::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  transition: left 0.3s ease;
+}
+
+.feature-item:hover::before {
+  left: 0;
+}
+
+.feature-item:hover .feature-icon {
+  animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ========== TYPING EFFECT FOR BADGE ========== */
+.badge-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(20, end) infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* ========== SHAKE EFFECT ON HOVER ========== */
+.shop-now-btn:hover {
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* ========== GLOW TEXT ON LOAD ========== */
+.slide-title {
+  animation: titleGlow 2s ease-in-out;
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 0 0 0 rgba(255, 107, 53, 0);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 0 rgba(255, 107, 53, 0);
+  }
+}
+
+/* ========== ROTATE ON SCROLL ========== */
+.about-image img {
+  transition: transform 0.5s ease;
+}
+
+.about-image:hover img {
+  transform: rotate(2deg) scale(1.05);
+}
+
+/* ========== PULSE ANIMATION FOR NEW BADGE ========== */
+.new-badge {
+  animation: newBadgePulse 1.5s infinite;
+}
+
+@keyframes newBadgePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* ========== SLIDE IN FROM BOTTOM ========== */
+.about-text, .about-image {
+  animation: slideInFromBottom 0.8s ease-out;
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== COUNT UP ANIMATION FOR STATS ========== */
+.stat-number {
+  animation: countUp 2s ease-out;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== 3D CARD FLIP ON HOVER ========== */
+.product-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.product-card:hover {
+  transform: rotateX(5deg) rotateY(5deg) translateY(-10px);
+}
+
+/* ========== NEON GLOW EFFECT ========== */
+.highlight {
+  animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+  from {
+    text-shadow: 0 0 5px rgba(255, 107, 53, 0.5);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(255, 107, 53, 0.8), 0 0 30px rgba(255, 107, 53, 0.4);
+  }
+}
+
+/* ========== MAGNETIC BUTTON EFFECT ========== */
+.shop-now-btn {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.shop-now-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ========== PARTICLE BURST ON CLICK ========== */
+.particle-burst {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+/* ========== FADE IN SECTIONS ON SCROLL ========== */
+.features-section, .new-arrivals, .about-section {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInOnScroll 0.8s ease-out forwards;
+}
+
+@keyframes fadeInOnScroll {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

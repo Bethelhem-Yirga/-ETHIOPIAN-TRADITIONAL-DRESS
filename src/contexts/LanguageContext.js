@@ -82,7 +82,16 @@ export const translations = {
     message: "Message",
     sendMessage: "Send Message",
 
-    quickLinks: "Quick Links"
+    quickLinks: "Quick Links",
+
+    faq: "FAQ",
+    frequentlyAskedQuestions: "Frequently Asked Questions",
+    orders: "Orders",
+    payments: "Payments",
+    customerSupport: "Customer Support",
+    humanSupport: "Human Support",
+    connectToHumanSupport: "Connect to Human Support",
+    estimatedWaitTime: "Estimated wait time: 1-2 minutes",
 
   },
   
@@ -162,7 +171,16 @@ export const translations = {
     email: "ኢሜል",
     message: "መልእክት",
     sendMessage: "መልዕክት ይላኩ",
-    quickLinks: "ፈጣን ሊንኮች"
+    quickLinks: "ፈጣን ሊንኮች",
+
+    faq: "ተደጋግሞ የሚጠየቁ ጥያቄዎች",
+    frequentlyAskedQuestions: "ተደጋግሞ የሚጠየቁ ጥያቄዎች",
+    orders: "ትዕዛዞች",
+    payments: "ክፍያዎች",
+    customerSupport: "የደንበኛ ድጋፍ",
+    humanSupport: "የሰው ድጋፍ",
+    connectToHumanSupport: "ከሰው ድጋፍ ጋር ይገናኙ",
+    estimatedWaitTime: "የሚጠበቅ ጊዜ፡ 1-2 ደቂቃዎች",
   }
 };
 

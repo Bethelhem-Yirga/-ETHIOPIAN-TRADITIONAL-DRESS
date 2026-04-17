@@ -10,7 +10,7 @@ const allProducts = [
     amharicName: "ሐበሻ ቀሚስ",
     price: 3500,
     category: "ሐበሻ ቀሚስ",
-    image: "img/hbdr.jpg",
+    image: "img/slide1.jpg",
     isNew: true
   },
   {
@@ -19,7 +19,7 @@ const allProducts = [
     amharicName: "የወንዶች ልብስ",
     price: 3000,
     category: "የወንዶች ልብስ",
-    image: "img/mens.jpg",
+    image: "img/m1.jpg",
     isNew: false
   },
   {
@@ -28,7 +28,7 @@ const allProducts = [
     amharicName: "ነጠላ",
     price: 800,
     category: "ነጠላ",
-    image: "img/scarf.jpg",
+    image: "img/t2.jpg",
     isNew: true
   },
   {
@@ -37,7 +37,7 @@ const allProducts = [
     amharicName: "የወንዶች ልብስ",
     price: 1800,
     category: "የወንዶች ልብስ",
-    image: "img/m4.jpg",
+    image: "img/m2.jpg",
     isNew: false
   },
   {
@@ -46,7 +46,7 @@ const allProducts = [
     amharicName: "ጥልፍ",
     price: 1200,
     category: "ነጠላ",
-    image: "img/telf.jpg",
+    image: "img/telf1.jpg",
     isNew: false
   },
   {
@@ -55,9 +55,40 @@ const allProducts = [
     amharicName: "የሰርግ ቀሚስ",
     price: 5500,
     category: "ሐበሻ ቀሚስ",
-    image: "img/wd.jpg",
+    image: "img/slide3.jpg",
+    isNew: true
+  },
+
+  {
+    id: 7,
+    name: "Habesha Kemis",
+    amharicName: "ሐበሻ ቀሚስ",
+    price: 3500,
+    category: "ሐበሻ ቀሚስ",
+    image: "img/s2.jpg",
+    isNew: true
+  },
+
+  {
+    id: 8,
+    name: "Habesha Kemis",
+    amharicName: "ሐበሻ ቀሚስ",
+    price: 3500,
+    category: "ሐበሻ ቀሚስ",
+    image: "img/slide2.jpg",
+    isNew: true
+  },
+
+  {
+    id: 9,
+    name: "Wedding Dress",
+    amharicName: "የሰርግ ቀሚስ",
+    price: 5500,
+    category: "ሐበሻ ቀሚስ",
+    image: "img/w1.jpg",
     isNew: true
   }
+
 ];
 
 const Products = () => {

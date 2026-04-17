@@ -1,12 +1,15 @@
-// components/Navbar.js - Updated for Shionhouse style
+// components/Navbar.js - Updated with Language
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,17 +20,17 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { path: '/', name: 'Home' },
-    { path: '/products', name: 'shop' },
-    { path: '/about', name: 'About' },
-    { path: '/contact', name: 'Contact' }
+    { path: '/', name: t('home') },
+    { path: '/products', name: t('products') },
+    { path: '/about', name: t('about') },
+    { path: '/contact', name: t('contact') }
   ];
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
         <Link to="/" className="logo">
-          HABESHA<span>Collections</span>
+          KUTA<span>Collections</span>
         </Link>
 
         <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
@@ -45,6 +48,7 @@ const Navbar = () => {
             🛒
             <span className="cart-count">0</span>
           </div>
+          <LanguageSwitcher />
         </div>
 
         <div className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>

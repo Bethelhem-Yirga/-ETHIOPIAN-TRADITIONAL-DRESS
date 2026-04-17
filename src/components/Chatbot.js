@@ -63,96 +63,114 @@ const Chatbot = () => {
   };
 
   // AI Response Generator (Enhanced)
-  const generateAIResponse = (userMessage) => {
-    const msg = userMessage.toLowerCase();
-    
-    // Check for human support request
-    if (msg.includes("human") || msg.includes("agent") || msg.includes("speak to someone") || msg.includes("talk to person")) {
-      setSupportRequested(true);
-      return "👨‍💼 I'll connect you with a customer support agent. Please wait a moment...\n\nIn the meantime, could you please share your name and order number (if applicable) so we can assist you better?";
-    }
-    
-    if (msg.includes("faq") || msg.includes("frequently asked") || msg.includes("common questions")) {
-      setShowFAQ(true);
-      return "📚 I've opened our FAQ section for you! You'll find answers to common questions about products, orders, payments, and support. Is there anything specific you'd like to know?";
-    }
-    
-    // Product related responses
-    if (msg.includes("habesha") || msg.includes("kemis") || msg.includes("dress")) {
-      return "✨ Our Habesha Kemis collection features beautiful handwoven traditional dresses. Prices range from 2,500 ETB to 8,500 ETB. Would you like to see our best-selling styles? 📸";
-    }
-    
-    if (msg.includes("men") || msg.includes("suit") || msg.includes("male")) {
-      return "👔 Our men's ceremonial collection celebrates Ethiopian heritage:\n\nTraditional Habesha Shirt - Handwoven with intricate embroidery, perfect for weddings and holidays . Prices start from 1,800 ETB. We have sizes S-XXL available. Which style interests you?";
-    }
-    
-    if (msg.includes("size") || msg.includes("fit") || msg.includes("measurement")) {
-      return "📏 We offer sizes from S to XXL. Here's our size guide:\n\n• S: 32-34\" chest\n• M: 36-38\" chest  \n• L: 40-42\" chest\n• XL: 44-46\" chest\n• XXL: 48-50\" chest\n\nNeed custom sizing? Just ask!";
-    }
-    
-    if (msg.includes("delivery") || msg.includes("shipping") || msg.includes("ship")) {
-      return "🚚 We offer free delivery within Addis Ababa for orders over 2,000 ETB. Nationwide delivery takes 3-5 business days. Would you like a shipping quote for your location?";
-    }
-    
-    if (msg.includes("return") || msg.includes("exchange")) {
-      return "🔄 We have a 7-day return policy for unworn items with original tags. Exchanges are free within Addis Ababa. Would you like to initiate a return?";
-    }
-    
-    if (msg.includes("payment") || msg.includes("pay")) {
-      return "💳 We accept Telebirr, Chapa, CBE Birr, Credit/Debit cards, and Cash on Delivery. All payments are secure and encrypted. Which payment method works best for you?";
-    }
-    
-    if (msg.includes("price") || msg.includes("cost")) {
-      return "💰 Our products range from 500 ETB for accessories to 8,500 ETB for premium wedding dresses. What specific item are you interested in? I can give you exact pricing!";
-    }
-    
-    if (msg.includes("location") || msg.includes("showroom") || msg.includes("store")) {
-      return "📍 Our showroom is located on the 5th Floor of Jan Meda Dashin Bank Building, Addis Ababa. We're open Monday-Saturday, 9 AM - 6 PM. Would you like directions?";
-    }
-    
-    if (msg.includes("contact") || msg.includes("phone") || msg.includes("email")) {
-      return "📞 You can reach us at +2519xxxxxxxx or email info@kutacollections.com. Our support team is available Monday-Saturday, 9 AM - 6 PM. How can we help you today?";
-    }
-    
-    if (msg.includes("order") || msg.includes("track")) {
-      return "📦 To track your order, please provide your order number. You can also check your order status in your account dashboard. Need help finding your order number?";
-    }
-    
-    if (msg.includes("custom") || msg.includes("tailor")) {
-      return "✂️ Yes! We offer custom tailoring services. Please visit our showroom for measurements or schedule a virtual consultation. Prices vary based on design complexity.";
-    }
-    
-    if (msg.includes("material") || msg.includes("fabric")) {
-      return "🧵 Our garments are made from premium handwoven Ethiopian cotton, known for its breathability and durability. Some pieces feature silk thread embroidery. Would you like more details?";
-    }
-    
-    if (msg.includes("care") || msg.includes("wash")) {
-      return "🧼 We recommend dry cleaning for embroidered pieces. Regular cotton items can be hand-washed cold. Would you like detailed care instructions for a specific item?";
-    }
-    
-    if (msg.includes("wedding") || msg.includes("special occasion")) {
-      return "💍 Congratulations! Our wedding collection features exquisite traditional dresses starting from 5,500 ETB. Would you like to schedule a fitting or see our bridal collection?";
-    }
-    
-    if (msg.includes("discount") || msg.includes("sale") || msg.includes("promotion")) {
-      return "🎉 Yes! We have seasonal promotions and first-time buyer discounts. Sign up for our newsletter to get 10% off your first purchase! Would you like the discount code?";
-    }
-    
-    if (msg.includes("hello") || msg.includes("hi") || msg.includes("hey")) {
-      return "👋 Hello! Welcome to KUTA Collections. I'm here to help with products, orders, sizing, or anything else! What can I assist you with today?";
-    }
-    
-    if (msg.includes("thanks") || msg.includes("thank")) {
-      return "🙏 You're very welcome! Is there anything else I can help you with? I'm here 24/7 for your questions!";
-    }
-    
-    if (msg.includes("bye") || msg.includes("goodbye")) {
-      return "👋 Thank you for visiting KUTA Collections! Have a wonderful day. Come back anytime, and don't forget to check our new arrivals! ✨";
-    }
-    
-    // Default response with FAQ suggestion
-    return "💡 I'm here to help! You can ask me about:\n\n📦 Products & Sizes\n🚚 Delivery & Returns\n💰 Payments & Pricing\n📍 Showroom Location\n\nOr type 'FAQ' to see common questions. How can I assist you today?";
-  };
+ // AI Response Generator (Enhanced & Fixed)
+const generateAIResponse = (userMessage) => {
+  const msg = userMessage.toLowerCase().trim();
+  
+  // Check for human support request
+  if (msg.includes("human") || msg.includes("agent") || msg.includes("speak to someone") || msg.includes("talk to person")) {
+    setSupportRequested(true);
+    return "👨‍💼 I'll connect you with a customer support agent. Please wait a moment...\n\nIn the meantime, could you please share your name and order number (if applicable) so we can assist you better?";
+  }
+  
+  if (msg.includes("faq") || msg.includes("frequently asked") || msg.includes("common questions")) {
+    setShowFAQ(true);
+    return "📚 I've opened our FAQ section for you! You'll find answers to common questions about products, orders, payments, and support. Is there anything specific you'd like to know?";
+  }
+  
+  // Payment related responses (MUST come before men's collection check)
+  if (msg.includes("payment") || msg.includes("pay") || msg.includes("payments") || msg.includes("payment methods") || msg.includes("how to pay") || msg.includes("what payment")) {
+    return "💳 We accept multiple payment methods:\n\n•Telebirr - Ethiopia's leading mobile payment\n•Chapa - Secure online payment gateway\n•CBE Birr - Commercial Bank of Ethiopia\n• Credit/Debit Cards - Visa, Mastercard\n•Cash on Delivery - Available in Addis Ababa\n\nAll payments are 100% secure and encrypted. Which method would you prefer?";
+  }
+  
+  // Product related responses
+  if (msg.includes("habesha") || msg.includes("kemis") || msg.includes("dress") || msg.includes("women")) {
+    return "✨ Our Habesha Kemis collection features beautiful handwoven traditional dresses. Prices range from 2,500 ETB to 8,500 ETB. Would you like to see our best-selling styles? 📸";
+  }
+  
+  // Men's collection (separate from payment)
+  if (msg.includes("men") || msg.includes("male") || msg.includes("men's") || msg.includes("mens")) {
+    return "👔 Our men's ceremonial collection celebrates Ethiopian heritage:\n\n•Traditional Habesha Shirt - Handwoven with intricate embroidery (2,500 - 4,500 ETB)\n\nSizes S-XXL available. Custom sizing also available! Which item interests you?";
+  }
+  
+  // Size guide
+  if (msg.includes("size") || msg.includes("fit") || msg.includes("measurement")) {
+    return "📏 We offer sizes from S to XXL. Here's our size guide:\n\n• S: 32-34\" chest\n• M: 36-38\" chest  \n• L: 40-42\" chest\n• XL: 44-46\" chest\n• XXL: 48-50\" chest\n\nNeed custom sizing? Just ask!";
+  }
+  
+  // Delivery/Shipping
+  if (msg.includes("delivery") || msg.includes("shipping") || msg.includes("ship") || msg.includes("deliver")) {
+    return "🚚 Delivery Information:\n\n•Addis Ababa: 1-2 business days (Free for orders over 2,000 ETB)\n•Nationwide: 3-5 business days\n•International: 7-14 business days\n\nWould you like a shipping quote for your location?";
+  }
+  
+  // Returns/Exchange
+  if (msg.includes("return") || msg.includes("exchange")) {
+    return "🔄 Return Policy:\n\n• 7-day return policy for unworn items\n• Original tags must be attached\n• Free exchanges within Addis Ababa\n• Refunds processed within 5-7 business days\n\nWould you like to initiate a return?";
+  }
+  
+  // Price/Cost
+  if (msg.includes("price") || msg.includes("cost")) {
+    return "💰 Our products range from 500 ETB for accessories to 8,500 ETB for premium wedding dresses. What specific item are you interested in? I can give you exact pricing!";
+  }
+  
+  // Location/Showroom
+  if (msg.includes("location") || msg.includes("showroom") || msg.includes("store")) {
+    return "📍 Our showroom is located on the 5th Floor of Jan Meda Dashin Bank Building, Addis Ababa. We're open Monday-Saturday, 9 AM - 6 PM. Would you like directions?";
+  }
+  
+  // Contact info
+  if (msg.includes("contact") || msg.includes("phone") || msg.includes("email")) {
+    return "📞 You can reach us at +2519xxxxxxxx or email info@kutacollections.com. Our support team is available Monday-Saturday, 9 AM - 6 PM. How can we help you today?";
+  }
+  
+  // Order tracking
+  if (msg.includes("order") || msg.includes("track")) {
+    return "📦 To track your order, please provide your order number. You can also check your order status in your account dashboard. Need help finding your order number?";
+  }
+  
+  // Custom tailoring
+  if (msg.includes("custom") || msg.includes("tailor")) {
+    return "✂️ Yes! We offer custom tailoring services. Please visit our showroom for measurements or schedule a virtual consultation. Prices vary based on design complexity.";
+  }
+  
+  // Material/Fabric
+  if (msg.includes("material") || msg.includes("fabric")) {
+    return "🧵 Our garments are made from premium handwoven Ethiopian cotton, known for its breathability and durability. Some pieces feature silk thread embroidery. Would you like more details?";
+  }
+  
+  // Care instructions
+  if (msg.includes("care") || msg.includes("wash")) {
+    return "🧼 Care Instructions:\n\n• Dry clean for embroidered pieces\n• Hand wash cold for regular cotton\n• Avoid bleach and harsh chemicals\n• Air dry away from direct sunlight\n\nWould you like detailed care instructions for a specific item?";
+  }
+  
+  // Wedding/Special occasion
+  if (msg.includes("wedding") || msg.includes("special occasion")) {
+    return "💍 Congratulations! Our wedding collection features exquisite traditional dresses starting from 5,500 ETB. Would you like to schedule a fitting or see our bridal collection?";
+  }
+  
+  // Discounts/Sales
+  if (msg.includes("discount") || msg.includes("sale") || msg.includes("promotion")) {
+    return "🎉 Yes! We have seasonal promotions and first-time buyer discounts. Sign up for our newsletter to get 10% off your first purchase! Would you like the discount code?";
+  }
+  
+  // Greetings
+  if (msg.includes("hello") || msg.includes("hi") || msg.includes("hey")) {
+    return "👋 Hello! Welcome to KUTA Collections. I'm here to help with products, orders, sizing, or anything else! What can I assist you with today?";
+  }
+  
+  // Thanks
+  if (msg.includes("thanks") || msg.includes("thank")) {
+    return "🙏 You're very welcome! Is there anything else I can help you with? I'm here 24/7 for your questions!";
+  }
+  
+  // Goodbye
+  if (msg.includes("bye") || msg.includes("goodbye")) {
+    return "👋 Thank you for visiting KUTA Collections! Have a wonderful day. Come back anytime, and don't forget to check our new arrivals! ✨";
+  }
+  
+  // Default response with FAQ suggestion
+  return "💡 I'm here to help! You can ask me about:\n\n📦 Products & Sizes\n🚚 Delivery & Returns\n💰 Payments & Pricing\n📍 Showroom Location\n\nOr type 'FAQ' to see common questions. How can I assist you today?";
+};
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
@@ -344,14 +362,14 @@ const Chatbot = () => {
         </div>
 
         <div className="chat-input-container">
-          <div className="quick-replies">
-            <button onClick={() => setInputMessage("Show me Habesha Kemis")}>👗 Habesha Kemis</button>
-            <button onClick={() => setInputMessage("👔 Men's Collection")}>👔 Men's Collection</button>
-            <button onClick={() => setInputMessage("Delivery info")}>🚚 Delivery</button>
-            <button onClick={() => setInputMessage("Payment methods")}>💳 Payments</button>
-            <button onClick={() => setInputMessage("Return policy")}>🔄 Returns</button>
-            <button onClick={() => setInputMessage("Talk to human")}>👨‍💼 Human Support</button>
-          </div>
+              <div className="quick-replies">
+                <button onClick={() => setInputMessage("Show me Habesha Kemis")}>👗 Habesha Kemis</button>
+                <button onClick={() => setInputMessage("Show me men's collection")}>👔 Men's Collection</button>
+                <button onClick={() => setInputMessage("Delivery info")}>🚚 Delivery</button>
+                <button onClick={() => setInputMessage("What payment methods do you accept?")}>💳 Payments</button>
+                <button onClick={() => setInputMessage("Return policy")}>🔄 Returns</button>
+                <button onClick={() => setInputMessage("Talk to human")}>👨‍💼 Human Support</button>
+              </div>
           <div className="chat-input-wrapper">
             <textarea
               ref={inputRef}

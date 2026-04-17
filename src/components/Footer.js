@@ -5,7 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import './Footer.css';
 
 const Footer = () => {
-  const { t } = useLanguage(); // Removed unused isAmharic and toggleLanguage
+  const { t, isAmharic } = useLanguage();// Removed unused isAmharic and toggleLanguage
 
   return (
     <footer className="footer">
@@ -13,7 +13,8 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <h3>KUTA Collections</h3>
-            <p>{t('fastDeliveryDesc')}</p>
+            <p>{isAmharic ? "የኢትዮጵያ ባህላዊ አልባሳት" : "Ethiopian Traditional Clothing"}</p>
+            <p>{isAmharic ? "በፍቅር እና በባህላዊ ቅርስ በጥበብ የተሰሩ" : "Handcrafted with love and cultural heritage"}</p>
           </div>
           
           <div className="footer-section">
@@ -27,15 +28,15 @@ const Footer = () => {
           </div>
           
           <div className="footer-section">
-            <h4>Contact Info</h4>
-            <p>📍 5th Floor, Jan Meda Dashin Bank Building</p>
-            <p>Addis Ababa, Ethiopia</p>
-            <p>📞 +2519xxxxxxxx</p>
-            <p>✉️ info@kutacollections.com</p>
+            <h4>{isAmharic ? "አድራሻ" : "Contact Info"}</h4>
+            <p>{isAmharic ? "📍 5ኛ ፎቅ፣ ጃን ሜዳ ዳሽን ባንክ ሕንፃ" : "📍 5th Floor, Jan Meda Dashin Bank Building"}</p>
+            <p>{isAmharic ? "አዲስ አበባ, ኢትዮጵያ" : "Addis Ababa, Ethiopia"}</p>
+            <p>{isAmharic ? "📞 +2519xxxxxxxx" : "📞 +2519xxxxxxxx"}</p>
+            <p>{isAmharic ? "✉️ info@kutacollections.com" : "✉️ info@kutacollections.com"}</p>
           </div>
           
           <div className="footer-section">
-            <h4>{t('followUs')}</h4>
+            <h4>{isAmharic ? "ይከተሉን" : "Follow Us"}</h4>
             <div className="social-links">
               <a 
                 href="https://facebook.com" 

@@ -1,69 +1,74 @@
 /* components/Navbar.css */
 .navbar {
-  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-  position: sticky;
+  position: fixed;
   top: 0;
+  width: 100%;
+  background: var(--white);
+  box-shadow: var(--shadow);
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.navbar.scrolled {
+  box-shadow: var(--shadow-hover);
 }
 
 .nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px 30px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.nav-logo {
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--primary);
   text-decoration: none;
-  display: flex;
-  flex-direction: column;
 }
 
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #FFD700;
-}
-
-.logo-sub {
-  font-size: 0.8rem;
-  color: #fff;
-  font-family: 'Ethiopic', 'Segoe UI', sans-serif;
+.logo span {
+  color: var(--secondary);
 }
 
 .nav-menu {
   display: flex;
-  gap: 2rem;
-  list-style: none;
+  gap: 30px;
+  align-items: center;
 }
 
 .nav-link {
   text-decoration: none;
-  color: white;
+  color: var(--secondary);
   font-weight: 500;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
+  transition: color 0.3s;
 }
 
-.nav-link:hover {
-  color: #FFD700;
-  transform: translateY(-2px);
-}
-
+.nav-link:hover,
 .nav-link.active {
-  color: #FFD700;
-  border-bottom: 2px solid #FFD700;
+  color: var(--primary);
 }
 
-.amharic-text {
-  font-size: 0.7rem;
-  opacity: 0.8;
+.cart-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-toggle {
@@ -72,10 +77,10 @@
   cursor: pointer;
 }
 
-.bar {
+.nav-toggle span {
   width: 25px;
-  height: 3px;
-  background-color: white;
+  height: 2px;
+  background: var(--secondary);
   margin: 3px 0;
   transition: 0.3s;
 }
@@ -87,16 +92,15 @@
 
   .nav-menu {
     position: fixed;
-    left: -100%;
     top: 70px;
+    left: -100%;
     flex-direction: column;
-    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+    background: var(--white);
     width: 100%;
-    text-align: center;
+    padding: 30px;
+    gap: 20px;
+    box-shadow: var(--shadow);
     transition: 0.3s;
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-    padding: 2rem 0;
-    gap: 1.5rem;
   }
 
   .nav-menu.active {
