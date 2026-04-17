@@ -42,3 +42,41 @@ KUTA Collections is a modern e-commerce platform dedicated to Ethiopian traditio
 - **Context API** - State management
 - **CSS3** - Custom animations
 - **Google Maps API** - Location services
+
+## 📁 Project Structure
+
+``` bash
+kuta-collections/
+├── src/
+│ ├── components/ # Navbar, Footer, Chatbot
+│ ├── pages/ # Home, Products, About, Contact
+│ ├── contexts/ # Language Context
+│ └── styles/ # CSS files
+├── public/
+│ └── img/ # Images
+└── package.json
+```
+
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone repository
+git clone https://github.com/Bethelhem-Yirga/-ETHIOPIAN-TRADITIONAL-DRESS.git
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+
+# Build for production
+npm run build
+
+```
