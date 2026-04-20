@@ -8,6 +8,7 @@ const rateLimit = require('express-rate-limit');
 dotenv.config();
 
 const app = express();
+mongoose.set('strictQuery', true); 
 
 // Rate limiting
 const limiter = rateLimit({
