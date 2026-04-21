@@ -107,3 +107,121 @@
     left: 0;
   }
 }
+/* Add to Navbar.css */
+.user-menu-container {
+  position: relative;
+}
+
+.user-menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 30px;
+  transition: background 0.3s;
+}
+
+.user-menu-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(135deg, #ff6b35, #ff8c5a);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.user-name {
+  color: #333;
+  font-weight: 500;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  overflow: hidden;
+  z-index: 100;
+  animation: fadeInDown 0.3s ease;
+}
+
+.user-dropdown a,
+.user-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  text-align: left;
+  text-decoration: none;
+  color: #333;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 0.9rem;
+}
+
+.user-dropdown a:hover,
+.user-dropdown button:hover {
+  background: #f8f9fa;
+  color: #ff6b35;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav-login-btn,
+.nav-register-btn {
+  padding: 8px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.nav-login-btn {
+  background: transparent;
+  border: 2px solid #ff6b35;
+  color: #ff6b35;
+}
+
+.nav-login-btn:hover {
+  background: #ff6b35;
+  color: white;
+}
+
+.nav-register-btn {
+  background: linear-gradient(135deg, #ff6b35, #ff8c5a);
+  color: white;
+}
+
+.nav-register-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
