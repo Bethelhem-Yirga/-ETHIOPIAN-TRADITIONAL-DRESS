@@ -2,38 +2,33 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product');
+const { protect, admin } = require('../middleware/auth');
+
 // const { protect, admin } = require('../middleware/auth'); // Comment out for now
 
 // Get all products
+// routes/products.js - Advanced filtering
 router.get('/', async (req, res) => {
-  try {
-    const { category, search, minPrice, maxPrice, sort } = req.query;
-    let query = {};
-    
-    if (category && category !== 'all') query.category = category;
-    if (search) {
-      query.$or = [
-        { nameEn: { $regex: search, $options: 'i' } },
-        { nameAm: { $regex: search, $options: 'i' } }
-      ];
-    }
-    if (minPrice || maxPrice) {
-      query.price = {};
-      if (minPrice) query.price.$gte = Number(minPrice);
-      if (maxPrice) query.price.$lte = Number(maxPrice);
-    }
-    
-    let products = Product.find(query);
-    
-    if (sort === 'price-low') products = products.sort('price');
-    if (sort === 'price-high') products = products.sort('-price');
-    if (sort === 'newest') products = products.sort('-createdAt');
-    
-    const allProducts = await products;
-    res.json({ success: true, products: allProducts });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+  const { category, minPrice, maxPrice, search } = req.query;
+  
+  let filter = {};
+  
+  if (category && category !== 'all') {
+    filter.category = category;
   }
+  
+  if (minPrice || maxPrice) {
+    filter.price = {};
+    if (minPrice) filter.price.$gte = Number(minPrice);
+    if (maxPrice) filter.price.$lte = Number(maxPrice);
+  }
+  
+  if (search) {
+    filter.nameEn = { $regex: search, $options: 'i' };
+  }
+  
+  const products = await Product.find(filter);
+  res.json({ products });
 });
 
 // Get single product
@@ -78,5 +73,14 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 });
+
+// Public routes (anyone can view)
+router.get('/', getProducts);
+router.get('/:id', getProduct);
+
+// Protected admin routes (only admins can modify)
+router.post('/', protect, admin, createProduct);
+router.put('/:id', protect, admin, updateProduct);
+router.delete('/:id', protect, admin, deleteProduct);
 
 module.exports = router;
