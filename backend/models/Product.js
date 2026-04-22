@@ -1,20 +1,53 @@
-// models/Product.js - Simplified for testing
+// backend/models/Product.js
 const mongoose = require('mongoose');
 
-// models/Product.js - Update the schema
 const productSchema = new mongoose.Schema({
-  nameEn: { type: String, required: true },
-  nameAm: { type: String, required: true },
-  price: { type: Number, required: true },
+  nameEn: {
+    type: String,
+    required: [true, 'Please add English name'],
+    trim: true
+  },
+  nameAm: {
+    type: String,
+    required: [true, 'Please add Amharic name'],
+    trim: true
+  },
+  price: {
+    type: Number,
+    required: [true, 'Please add price'],
+    min: 0
+  },
   category: {
     type: String,
-    enum: ['women', 'men', 'accessories'] // Only these 3 options allowed
+    enum: ['women', 'men', 'accessories', 'all'],
+    default: 'all'
   },
-  // Use a different name instead of 'isNew'
-  isNewProduct: { type: Boolean, default: false },  // Changed from 'isNew'
-  // ... other fields
-}, { 
-  suppressReservedKeysWarning: true  // Suppresses the warning
+  image: {
+    type: String,
+    default: ''
+  },
+  isNewProduct: {
+    type: Boolean,
+    default: false
+  },
+  descriptionEn: {
+    type: String,
+    default: ''
+  },
+  descriptionAm: {
+    type: String,
+    default: ''
+  },
+  sizes: [{
+    type: String,
+    enum: ['S', 'M', 'L', 'XL', 'XXL']
+  }],
+  stock: {
+    type: Number,
+    default: 0
+  }
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('Product', productSchema);
