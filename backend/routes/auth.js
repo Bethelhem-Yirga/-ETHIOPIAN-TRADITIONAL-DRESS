@@ -1,4 +1,4 @@
-// backend/routes/auth.js - Complete version with /me endpoint
+// backend/routes/auth.js - Complete Fixed Version
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
@@ -15,11 +15,23 @@ const generateToken = (id) => {
 // @route   POST /api/auth/register
 router.post('/register', async (req, res) => {
   try {
+    console.log('📝 Registration request received:', { email: req.body.email, name: req.body.name });
+    
     const { name, email, password, phone } = req.body;
+    
+    // Validate required fields
+    if (!name || !email || !password) {
+      console.log('❌ Missing required fields');
+      return res.status(400).json({
+        success: false,
+        message: 'Name, email and password are required'
+      });
+    }
 
     // Check if user already exists
     const userExists = await User.findOne({ email });
     if (userExists) {
+      console.log('❌ User already exists:', email);
       return res.status(400).json({
         success: false,
         message: 'User already exists with this email'
@@ -31,8 +43,10 @@ router.post('/register', async (req, res) => {
       name,
       email,
       password,
-      phone
+      phone: phone || ''
     });
+
+    console.log('✅ User created successfully:', user._id);
 
     // Generate token
     const token = generateToken(user._id);
@@ -49,9 +63,10 @@ router.post('/register', async (req, res) => {
       token
     });
   } catch (error) {
+    console.error('❌ Registration error:', error.message);
     res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message || 'Server error during registration'
     });
   }
 });
@@ -60,12 +75,15 @@ router.post('/register', async (req, res) => {
 // @route   POST /api/auth/login
 router.post('/login', async (req, res) => {
   try {
+    console.log('🔐 Login request received:', req.body.email);
+    
     const { email, password } = req.body;
 
     // Check for user email
     const user = await User.findOne({ email }).select('+password');
     
     if (!user) {
+      console.log('❌ User not found:', email);
       return res.status(401).json({
         success: false,
         message: 'Invalid email or password'
@@ -76,6 +94,7 @@ router.post('/login', async (req, res) => {
     const isPasswordMatch = await user.matchPassword(password);
     
     if (!isPasswordMatch) {
+      console.log('❌ Invalid password for:', email);
       return res.status(401).json({
         success: false,
         message: 'Invalid email or password'
@@ -84,6 +103,8 @@ router.post('/login', async (req, res) => {
 
     // Generate token
     const token = generateToken(user._id);
+
+    console.log('✅ Login successful:', email);
 
     res.status(200).json({
       success: true,
@@ -97,14 +118,15 @@ router.post('/login', async (req, res) => {
       token
     });
   } catch (error) {
+    console.error('❌ Login error:', error.message);
     res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message || 'Server error during login'
     });
   }
 });
 
-// @desc    Get current user (ADD THIS ENDPOINT)
+// @desc    Get current user
 // @route   GET /api/auth/me
 router.get('/me', async (req, res) => {
   try {
@@ -136,6 +158,7 @@ router.get('/me', async (req, res) => {
       user
     });
   } catch (error) {
+    console.error('❌ Get user error:', error.message);
     res.status(401).json({
       success: false,
       message: 'Not authorized, token failed'
@@ -173,6 +196,7 @@ router.put('/updatedetails', async (req, res) => {
       user
     });
   } catch (error) {
+    console.error('❌ Update profile error:', error.message);
     res.status(500).json({
       success: false,
       message: error.message
@@ -197,6 +221,13 @@ router.put('/updatepassword', async (req, res) => {
     
     const user = await User.findById(decoded.id).select('+password');
     
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+    
     // Check current password
     const isMatch = await user.matchPassword(req.body.currentPassword);
     if (!isMatch) {
@@ -219,6 +250,7 @@ router.put('/updatepassword', async (req, res) => {
       token: newToken
     });
   } catch (error) {
+    console.error('❌ Update password error:', error.message);
     res.status(500).json({
       success: false,
       message: error.message
