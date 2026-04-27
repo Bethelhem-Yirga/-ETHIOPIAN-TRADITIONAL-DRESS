@@ -42,10 +42,12 @@ const productSchema = new mongoose.Schema({
     type: String,
     enum: ['S', 'M', 'L', 'XL', 'XXL']
   }],
-  stock: {
-    type: Number,
-    default: 0
-  }
+// Add to models/Product.js schema
+stock: {
+  type: Number,
+  default: 0,
+  min: 0
+}
 }, {
   timestamps: true
 });
