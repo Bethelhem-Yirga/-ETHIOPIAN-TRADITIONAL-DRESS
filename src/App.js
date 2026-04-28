@@ -1,8 +1,9 @@
-// App.js - Fixed Version
+// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { AuthProvider } from './contexts/AuthContext';
+import { CartProvider } from './contexts/CartContext';
 import { useAuth } from './contexts/AuthContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -11,17 +12,18 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Cart from './pages/Cart';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
 import './App.css';
 
-// Protected Route Component - Must be inside AuthProvider
+// Protected Route Component
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? children : <Navigate to="/login" />;
 };
 
-// Main App Content - Must be inside all providers
+// Main App Content
 function AppContent() {
   const { isAuthenticated, user } = useAuth();
 
@@ -35,6 +37,7 @@ function AppContent() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/profile" element={
           <ProtectedRoute>
             <div style={{ padding: '120px 20px 60px', textAlign: 'center' }}>
@@ -55,9 +58,11 @@ function App() {
   return (
     <LanguageProvider>
       <AuthProvider>
-        <Router>
-          <AppContent />
-        </Router>
+        <CartProvider>
+          <Router>
+            <AppContent />
+          </Router>
+        </CartProvider>
       </AuthProvider>
     </LanguageProvider>
   );
