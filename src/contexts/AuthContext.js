@@ -1,4 +1,4 @@
-// src/contexts/AuthContext.js - Verify this is correct
+// src/contexts/AuthContext.js - Fix the register function
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import authService from '../services/authService';
 
@@ -35,24 +35,38 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     setError(null);
-    const response = await authService.register(userData);
-    if (response.success) {
-      setUser(response.user);
-      return true;
-    } else {
-      setError(response.message);
+    try {
+      const response = await authService.register(userData);
+      console.log('Register response in context:', response);
+      
+      if (response.success) {
+        setUser(response.user);
+        return true;
+      } else {
+        setError(response.message);
+        return false;
+      }
+    } catch (err) {
+      setError(err.message);
       return false;
     }
   };
 
   const login = async (credentials) => {
     setError(null);
-    const response = await authService.login(credentials);
-    if (response.success) {
-      setUser(response.user);
-      return true;
-    } else {
-      setError(response.message);
+    try {
+      const response = await authService.login(credentials);
+      console.log('Login response in context:', response);
+      
+      if (response.success) {
+        setUser(response.user);
+        return true;
+      } else {
+        setError(response.message);
+        return false;
+      }
+    } catch (err) {
+      setError(err.message);
       return false;
     }
   };
@@ -71,6 +85,18 @@ export const AuthProvider = ({ children }) => {
     return false;
   };
 
+  const value = {
+    user,
+    loading,
+    error,
+    register,
+    login,
+    logout,
+    updateProfile,
+    isAuthenticated: !!user,
+    isAdmin: user?.role === 'admin'
+  };
+
   if (loading) {
     return (
       <div style={{ 
@@ -83,18 +109,6 @@ export const AuthProvider = ({ children }) => {
       </div>
     );
   }
-
-  const value = {
-    user,
-    loading,
-    error,
-    register,
-    login,
-    logout,
-    updateProfile,
-    isAuthenticated: !!user,
-    isAdmin: user?.role === 'admin'
-  };
 
   return (
     <AuthContext.Provider value={value}>
