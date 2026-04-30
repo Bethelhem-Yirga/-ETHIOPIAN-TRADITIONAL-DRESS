@@ -1,4 +1,4 @@
-// src/pages/Register.js
+// src/pages/Register.js - Fixed Version
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -19,16 +19,17 @@ const Register = () => {
   });
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const [serverError, setServerError] = useState('');
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
-    // Clear error for this field
     if (errors[e.target.name]) {
       setErrors({ ...errors, [e.target.name]: '' });
     }
+    setServerError('');
   };
 
   const validateForm = () => {
@@ -56,6 +57,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setServerError('');
     
     if (!validateForm()) {
       return;
@@ -63,14 +65,45 @@ const Register = () => {
     
     setLoading(true);
     
-    const { confirmPassword, ...userData } = formData;
-    const success = await register(userData);
+    const userData = {
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+      phone: formData.phone || ''
+    };
     
-    if (success) {
-      navigate('/');
+    try {
+      // Direct API call to debug
+      const response = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+      
+      const data = await response.json();
+      console.log('Registration response:', data);
+      
+      if (data.success) {
+        // Store token and user data
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        
+        // Show success message
+        alert(isAmharic ? 'በደስታ ተመዝግበዋል!' : 'Registration successful!');
+        
+        // Navigate to home
+        navigate('/');
+      } else {
+        setServerError(data.message || (isAmharic ? 'ምዝገባ አልተሳካም' : 'Registration failed'));
+      }
+    } catch (error) {
+      console.error('Registration error:', error);
+      setServerError(isAmharic ? 'የአገልጋይ ስህተት' : 'Server error');
+    } finally {
+      setLoading(false);
     }
-    
-    setLoading(false);
   };
 
   return (
@@ -82,10 +115,16 @@ const Register = () => {
             <p>{isAmharic ? 'እባክዎ መረጃዎን ይሙሉ' : 'Please fill your information'}</p>
           </div>
 
+          {serverError && (
+            <div className="auth-error">
+              <span>⚠️</span> {serverError}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="auth-form">
             <div className="form-group">
               <label htmlFor="name">
-                {isAmharic ? 'ሙሉ ስም' : 'Full Name'}
+                {isAmharic ? 'ሙሉ ስም' : 'Full Name'} *
               </label>
               <input
                 type="text"
@@ -101,7 +140,7 @@ const Register = () => {
 
             <div className="form-group">
               <label htmlFor="email">
-                {isAmharic ? 'ኢሜል' : 'Email Address'}
+                {isAmharic ? 'ኢሜል' : 'Email Address'} *
               </label>
               <input
                 type="email"
@@ -131,7 +170,7 @@ const Register = () => {
 
             <div className="form-group">
               <label htmlFor="password">
-                {isAmharic ? 'የይለፍ ቃል' : 'Password'}
+                {isAmharic ? 'የይለፍ ቃል' : 'Password'} *
               </label>
               <input
                 type="password"
@@ -147,7 +186,7 @@ const Register = () => {
 
             <div className="form-group">
               <label htmlFor="confirmPassword">
-                {isAmharic ? 'የይለፍ ቃል ድገም' : 'Confirm Password'}
+                {isAmharic ? 'የይለፍ ቃል ድገም' : 'Confirm Password'} *
               </label>
               <input
                 type="password"
@@ -165,7 +204,7 @@ const Register = () => {
               <label className="checkbox-label">
                 <input type="checkbox" required />
                 <span>
-                  {isAmharic ? 'ውሎች እና ሁኔታዎችን ተቀብያለሁ' : 'I agree to the Terms and Conditions'}
+                  {isAmharic ? 'ውሎች እና ሁኔታዎችን ተቀብያለሁ' : 'I agree to the Terms and Conditions'} *
                 </span>
               </label>
             </div>
