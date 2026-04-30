@@ -1,3 +1,4 @@
+// src/pages/Products.js
 import React, { useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -6,6 +7,7 @@ import './Products.css';
 const allProducts = [
   {
     id: 1,
+    _id: "69eb7391eeff0d21da81fbd3",           // ← ADD THIS HERE
     name: "Habesha Kemis",
     amharicName: "ሐበሻ ቀሚስ",
     price: 3500,
@@ -15,6 +17,7 @@ const allProducts = [
   },
   {
     id: 2,
+    _id: "69eb7391eeff0d21da81fbd4",           // ← ADD THIS HERE
     name: "Habesha Man Traditional Cloth",
     amharicName: "የወንዶች ልብስ",
     price: 3000,
@@ -24,6 +27,7 @@ const allProducts = [
   },
   {
     id: 3,
+    _id: "69eb7391eeff0d21da81fbd5",           // ← ADD THIS HERE
     name: "Netela Scarf",
     amharicName: "ነጠላ",
     price: 800,
@@ -33,6 +37,7 @@ const allProducts = [
   },
   {
     id: 4,
+    _id: "69eb7391eeff0d21da81fbd6",           // ← ADD THIS HERE
     name: "Habesha Man Traditional Cloth",
     amharicName: "የወንዶች ልብስ",
     price: 1800,
@@ -42,6 +47,7 @@ const allProducts = [
   },
   {
     id: 5,
+    _id: "69eb7391eeff0d21da81fbd7",           // ← ADD THIS HERE
     name: "Tilfi",
     amharicName: "ጥልፍ",
     price: 1200,
@@ -51,6 +57,7 @@ const allProducts = [
   },
   {
     id: 6,
+    _id: "69eb7391eeff0d21da81fbd8",           // ← ADD THIS HERE
     name: "Wedding Dress",
     amharicName: "የሰርግ ቀሚስ",
     price: 5500,
@@ -58,9 +65,9 @@ const allProducts = [
     image: "img/slide3.jpg",
     isNew: true
   },
-
   {
     id: 7,
+    _id: "69eb7391eeff0d21da81fbd9",           // ← ADD THIS HERE
     name: "Habesha Kemis",
     amharicName: "ሐበሻ ቀሚስ",
     price: 3500,
@@ -68,9 +75,9 @@ const allProducts = [
     image: "img/s2.jpg",
     isNew: true
   },
-
   {
     id: 8,
+    _id: "69eb7391eeff0d21da81fbd10",           // ← ADD THIS HERE
     name: "Habesha Kemis",
     amharicName: "ሐበሻ ቀሚስ",
     price: 3500,
@@ -78,9 +85,9 @@ const allProducts = [
     image: "img/slide2.jpg",
     isNew: true
   },
-
   {
     id: 9,
+    _id: "69eb7391eeff0d21da81fbd11",           // ← ADD THIS HERE
     name: "Wedding Dress",
     amharicName: "የሰርግ ቀሚስ",
     price: 5500,
@@ -88,11 +95,10 @@ const allProducts = [
     image: "img/w1.jpg",
     isNew: true
   }
-
 ];
 
 const Products = () => {
-  const { t } = useLanguage();  // Removed unused 'isAmharic'
+  const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
