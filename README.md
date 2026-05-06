@@ -23,7 +23,7 @@
 
 ## 🌍 Live Demo
 
-[View Live Demo](https://ethiopian-traditional-dress.vercel.app/) | 
+[View Live Demo](https://ethio-habesha-kemis.netlify.app/products) | 
 [Report Bug](https://github.com/Bethelhem-Yirga/-ETHIOPIAN-TRADITIONAL-DRESS/issues)
 
 ## 📖 About The Project
